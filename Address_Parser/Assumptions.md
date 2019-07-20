@@ -15,4 +15,3 @@
 - If UnitTpe is given then LevelType must be given as well and vice vera. Only exception is BuildingName that may or may not be given.
 - If UnitType and LevelType are given then corresponding numbers are provided for sure. 
 - If building name is not given then space or allowed characters will be present between level number and street number.
-- 
