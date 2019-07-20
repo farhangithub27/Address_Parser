@@ -64,7 +64,7 @@ class AddressParser():
                     result['LevelType'] = token.upper()
 
             elif result['LevelType'] is not None and result['LevelNumber'] is None:
-                if hyphened_street_number or token.isalpha() or not re.search(r'([a-zA-Z]{0,2}\d+[a-zA-Z]{0,2})', token):
+                if hyphened_street_number or token.isalpha() or not re.fullmatch(r'([^a-z]{0,2}\d+[^a-z]{0,2})', token):
                     print("Cannot be parsed. LevelNumber is missing in required format.")
                     #break
                 else:
