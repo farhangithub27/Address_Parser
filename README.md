@@ -22,4 +22,9 @@ The PSMA Team
 2. [Database](Database_challenge)
     +   Queries complete for first portion. 
     +   [Transformation queries complete](Database_challenge/Transformation)
+        +   For transformation queries run in following order
+            + creation_my_name_2.sql
+            + transform.sql
+            + transform_deleted_items.sql
         +   The problem with the last transformation example is duplicate id.
+        +   It can be easily resolved by created an alphanumeric auto incrementable sequence.
