@@ -13,6 +13,9 @@ The PSMA Team
 # Solutions
 
 1. [Address Parser](Address_Parser)
+    -  Python 3.7.1 used 
+    -  In order to run address parser simply careate a pycharm project and clone the Address_Parser. 
+       Simply run parser_main.py to execute
     -  [Assumptions](Address_Parser/Assumptions.md)
     -  [Issues Found](Address_Parser/issues.md)
     -  [Sample Output](Address_Parser/sample_ouput.md)
