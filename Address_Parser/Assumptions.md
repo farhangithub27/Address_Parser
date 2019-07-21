@@ -12,6 +12,6 @@
   + StateTerritory
 - Address string will not contain special characters other than mentioned in input format.
 - Unit can be abbreviated as U followed by unit number in allowed formats.
-- If UnitTpe is given then LevelType must be given as well and vice vera. Only exception is BuildingName that may or may not be given.
+- BuildingName may or may not be given.
 - If UnitType and LevelType are given then corresponding numbers are provided for sure. 
 - If building name is not given then space or allowed characters will be present between level number and street number.
