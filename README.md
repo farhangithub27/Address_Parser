@@ -15,6 +15,7 @@ The PSMA Team
 1. [Address Parser](Address_Parser)
     -  [Assumptions](Address_Parser/Assumptions.md)
     -  [Issues Found](Address_Parser/issues.md)
+    -  [Sample Output](Address_Parser/sample_ouput.md)
 2. [Database](Database_challenge)
     +   Queries complete for first portion. 
     +   [Transformation queries complete](Database_challenge/Transformation)
