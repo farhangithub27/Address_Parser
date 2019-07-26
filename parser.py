@@ -32,9 +32,7 @@ class AddressParser:
         tokens = re.split(r'[,\s]\s*',address)
 
         print("Address Tokens:" , tokens)
-        # \s* matches zero or more of spaces (\s) after , and \s inside square brackets
-        # or
-        # tokens = address.split()# Only works with one argument. Default is space (\s)
+        
         for t in range(0, len(tokens)):
             token = tokens[t]
             hyphened_street_number = re.search(r'(\d*)-',token)
@@ -50,7 +48,7 @@ class AddressParser:
             elif result['UnitType'] is not None and result['UnitNumber'] is None:
                 if token.upper() in self.level or token.lower() in [x.lower() for x in list(self.level.values())] or hyphened_street_number \
                         or not re.fullmatch(r'[^a-z]{0,2}\d+[^a-z]{0,2}', token):
-                    #print("Cannot be parsed. UnitNumber is missing in required format.")
+                    
                     return json.dumps({"parse_error":"Cannot be parsed. UnitNumber is missing in required format."})
                 else:
                     result['UnitNumber'] = token
@@ -65,8 +63,7 @@ class AddressParser:
             elif result['LevelType'] is not None and result['LevelNumber'] is None:
                 if hyphened_street_number or token.isalpha() or not re.fullmatch(r'[^a-z]{0,2}\d+[^a-z]{0,2}', token):
                     return json.dumps({"parse_error": "Cannot be parsed. LevelNumber is missing in required format."})
-                    #print("Cannot be parsed. LevelNumber is missing in required format.")
-                    #break
+                    
                 else:
                     result['LevelNumber'] = token
 
@@ -80,9 +77,7 @@ class AddressParser:
                 else:
                     return json.dumps({"parse_error": "Cannot be parsed. Street Number is not in required format."})
             elif  (re.fullmatch(r'[^a-z]{0,2}\d+[^a-z]{0,2}', token) or token.isnumeric()) and result['StreetNumber1'] is None:
-                #if result['BuildingName'] is not None:
-                #    print("Cannot be parsed. Please check street number.")
-                #else:
+                
                 result['StreetNumber1'] = token.upper()
 
             # Finding Street Type
@@ -96,13 +91,11 @@ class AddressParser:
             # Finding Street Suffix
             elif token.upper() in self.road_suffix or token.lower() in [x.lower() for x in list(self.road_suffix.values())]\
                     and tokens[t+2]!='south':
-                #print(token + "suf")
+                
                 if token.upper() in self.road_suffix:
                     result['StreetSuffix'] = self.road_suffix[token.upper()].upper()
                 if  result['StreetSuffix'] is None and token.lower() in [x.lower() for x in list(self.road_suffix.values())]: #\
-                        #and (tokens[t+1] in self.road_suffix
-                        #or tokens[t+1].lower() in [x.lower() for x in list(self.road_suffix.values())]):# \
-                        #and (token=='EAST' or token=='WEST'):
+                        
                     result['StreetSuffix'] = token.upper()
                 if  result['StreetSuffix'] is not None and token.lower() in [x.lower() for x in list(self.road_suffix.values())] \
                         and (tokens[t+1] not in self.road_suffix or tokens[t+1].lower() not in [x.lower() for x in list(self.road_suffix.values())]) \
@@ -113,14 +106,14 @@ class AddressParser:
             elif token.upper() in self.state or token.lower() in [x.lower() for x in list(self.state.values())] \
                     or list(filter(re.compile(r"\b%s\b" %token.lower()).search,[x.lower() for x in self.state.values()])) \
                     and tokens[t+1].lower() not in [x.lower() for x in list(self.road_suffix.values())]:
-                #print(token+"tuff")
+                
                 if token.upper() in self.state:
                     result['StateTerritory'] = token.upper()
                 elif list(filter(re.compile(r"\b%s\b" %token.lower()).search,[x.lower() for x in self.state.values()])) \
-                        and result['StateTerritory'] is None: ##and [key for key,value in self.state.items() if value.lower() != token.lower()][0] \
+                        and result['StateTerritory'] is None:
                     result['StateTerritory'] = token.upper()
                 elif list(filter(re.compile(r"\b%s\b" %token.lower()).search,[x.lower() for x in self.state.values()])) \
-                        and result['StateTerritory'] is not None:# and [key for key,value in self.state.items() if value.lower() != token.lower()][0]:
+                        and result['StateTerritory'] is not None:
                     result['StateTerritory'] = result['StateTerritory']+" "+token.upper()
 
                 else:
@@ -166,13 +159,12 @@ class AddressParser:
         if result['StreetNumber1'] is None or result['StreetName'] is None or result['LocalityName'] is None \
             or result['StateTerritory'] is None:
             return json.dumps({"parse_error": "Cannot be parsed. Please check Street Number, Street Name, Locality Name and Sate Territory"})
-            #print ("Cannot be parsed. Please check Street Number, Street Name and Locality Name and State Territory")
-            #break
+            
 
         else:
 
             if re.search(r'(?:^|\W)THE(?:$|\W)',result['StreetName']):
-                #print("The found")
+                
                 if result['StreetName'] is not None and result['StreetType'] is not None and result['StreetSuffix'] is not None:
                     result['StreetName'] = result['StreetName'] + " "+ result['StreetType'] +" "+ result['StreetSuffix']
                     result['StreetType'] = None
@@ -180,7 +172,7 @@ class AddressParser:
             if result['StateTerritory'].lower() in [x.lower() for x in list(self.state.values())]:
                 result['StateTerritory'] = [key for key, value in self.state.items() if value.lower() == result['StateTerritory'].lower()][0]
 
-            #print(result)
+            
             return json.dumps(result)
 
 
@@ -201,6 +193,4 @@ def get_states_codes():
     return environment.AU_STATES_CODES
 
 
-#if __name__== "__main__":
-#    parser = AddressParser()
-#    parser.parse("House DD4 L 7Y PSMA HOUSE 6D-5 the vilo main st south,watson south australia 2603")
+
