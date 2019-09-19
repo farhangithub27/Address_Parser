@@ -3,7 +3,7 @@ import json
 from Address_Parser import parser
 
 def main():
-    address = "UNIT 6 LEVEL 2 PSMA HOUSE 113-115 CANBERRA AVENUE SOUTH west, GRIFFITH victoria 2603"
+    address = "UNIT 6 LEVEL 2 COMPLEX HOUSE 201-200 CANBERRA AVENUE SOUTH west, Woden victoria 2603"
     parser_object = parser.AddressParser()
     response = parser_object.parse(address)
     print("1:"+str(json.loads(response)))
@@ -60,19 +60,19 @@ def main():
     response = parser_object.parse(address)
     print("14:" + str(json.loads(response)))
     print('\n')
-    address = "FL DD4 PSMA HOUSE 6D vilo main highway w,watson ACT 2603"
+    address = "FL DD4 COMPLEX HOUSE 6D vilo main highway w,watson ACT 2603"
     response = parser_object.parse(address)
     print("15:" + str(json.loads(response)))
     print('\n')
-    address = "House DD4 PSMA HOUSE 6D vilo main st south,watson ACT 2603"
+    address = "House DD4 COMPLEX HOUSE 6D vilo main st south,watson ACT 2603"
     response = parser_object.parse(address)
     print("16:" + str(json.loads(response)))
     print('\n')
-    address = "House DD4 PSMA HOUSE 6D vilo main st south,acton tasmania  2603"
+    address = "House DD4 COMPLEX HOUSE 6D vilo main st south,acton tasmania  2603"
     response = parser_object.parse(address)
     print("17:" + str(json.loads(response)))
     print('\n')
-    address = "House DD4 L 7Y PSMA HOUSE 6D vilo main st south east,watson victoria 2603"
+    address = "House DD4 L 7Y COMPLEX HOUSE 6D vilo main st south east,watson victoria 2603"
     response = parser_object.parse(address)
     print("18:" + str(json.loads(response)))
     print('\n')
@@ -80,11 +80,11 @@ def main():
     response = parser_object.parse(address)
     print("19:" + str(json.loads(response)))
     print('\n')
-    address = "House DD4 L 7Y PSMA HOUSE 6D-5 the vilo main st south,watson vic 2603"
+    address = "House DD4 L 7Y COMPLEX HOUSE 6D-5 the vilo main st south,watson vic 2603"
     response = parser_object.parse(address)
     print("20:" + str(json.loads(response)))
     print('\n')
-    address = "House DD4 L 7Y PSMA HOUSE 6D-5 the vilo main st south,watson south australia 2603"
+    address = "House DD4 L 7Y COMPLEX HOUSE 6D-5 the vilo main st south,watson south australia 2603"
     response = parser_object.parse(address)
     print("21:" + str(json.loads(response)))
     print('\n')
